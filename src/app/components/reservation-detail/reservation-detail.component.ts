@@ -49,8 +49,8 @@ export class ReservationDetailComponent implements OnInit {
           // Display default calendar date as start date from created reservation
           this.viewDate = new Date(this.data.start);
           this.events.forEach(event => {
-            event.start = new Date(event.start),
-            event.end = new Date(event.end),
+            event.start = new Date(event.Start),
+            event.end = new Date(event.End),
             event.color = this.calendarConfig.colors.green
           });
   
