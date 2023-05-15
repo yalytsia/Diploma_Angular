@@ -53,9 +53,9 @@
     <div class="card " *ngIf="events?.length > 0">
       <img src="{{ events[0].ImageURL }}" height="200px" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title text-center">{{ events[0].Room }}</h5>
-        <p class="card-text text-center">{{ events[0].Total }} DKK </p>
-        <p class="card-text text-center">(Reservation Name: {{ events[0].title }})</p>
+        <h5 class="card-title text-center">{{ events[0].Title }}</h5>
+        <p class="card-text text-center">{{ events[0].Total }} ГРН </p>
+        <p class="card-text text-center">(Reservation Name: {{ events[0].Title }})</p>
         <p class="card-text text-center"><small>{{ events[0].Start | date :'h:mm a' }} -
             {{ events[0].End | date :'h:mm a dd-MM-y' }}</small> </p>
         <hr>

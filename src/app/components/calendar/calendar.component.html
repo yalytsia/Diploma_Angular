@@ -100,7 +100,7 @@
       <img src="{{ room.ImageURL }}" height="220px" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title text-center">{{ room.Title }}</h5>
-        <p class="card-text text-center">{{ room.PriceHour }} DKK / Hour </p>
+        <p class="card-text text-center">{{ room.PriceHour }} ГРН / год </p>
         <p class="card-text" style="font-size: 18px;"><small class="text-muted">Program: {{ room.StartProgram }}:00 -
             {{ room.EndProgram }}:00</small> </p>
         <p class="card-text" style="font-size: 18px;"><small class="text-muted">Description: {{ room.Description }}</small></p>
@@ -179,7 +179,7 @@
       </div>
       <div class="card-footer">
         <div class="float-right" style="margin-right:30px">
-          <span>Total: {{ total }} DKK</span>
+          <span>Total: {{ total }} ГРН</span>
         </div>
 
       </div>
@@ -236,7 +236,7 @@
               <label>Total</label>
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <div class="input-group-text">DKK</div>
+                  <div class="input-group-text">ГРН</div>
                 </div>
                 <input name="total" #total="ngModel" [(ngModel)]="reservationForm.Total" class="form-control" readonly>
               </div>

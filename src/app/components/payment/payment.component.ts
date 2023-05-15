@@ -34,7 +34,7 @@ export class PaymentComponent implements OnInit {
               {
                 description: "Room: " + this.room.RehersalRoomName,
                 amount: {
-                  currency_code: 'DKK',
+                  currency_code: 'ГРН',
                   value: this.reservation.Total
                 }
               }
