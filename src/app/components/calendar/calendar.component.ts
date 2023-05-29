@@ -57,9 +57,9 @@ export class CalendarComponent implements OnInit {
   public total: number;
 
   // Define submitType
-  public submitType = 'Create'
+  public submitType = 'Створити'
   public showNew: Boolean = true;
-
+  public titleReservation: string;
   // Set values into reservation to proceeed with Reserve Now button 
   public reservation: Reservation;
 
@@ -114,7 +114,7 @@ export class CalendarComponent implements OnInit {
         id: Math.floor(100000 + Math.random() * 900000),
         start: null,
         end: null,
-        title: this.customer.FirstName,
+        title: this.titleReservation,
         total: 0,
         customerID: null,
         roomId: this.room.RoomId,
@@ -147,7 +147,9 @@ export class CalendarComponent implements OnInit {
 
     // Perform calculation difference between end and start time
     let diff = this.end.valueOf() - this.start.valueOf();
-
+    console.log("this.end.valueOf() " + JSON.stringify(this.end.valueOf()));
+    console.log("this.start.valueOf() " + JSON.stringify(this.start.valueOf()));
+    console.log("diff " + JSON.stringify(diff));
     // Convert milliseconds to hours
     let timeSelection = (diff / 1000 / 60 / 60);
 
@@ -156,7 +158,7 @@ export class CalendarComponent implements OnInit {
 
     // Assign the roundTimeSelection to duration variable
     this.duration = roundTimeSelection;
-
+    this.titleReservation = this.reservationForm.title;
     // Perform total price using start and end time
     this.reservationForm.total = (this.room.PriceHour * roundTimeSelection).toFixed(2);
     this.total = this.reservationForm.total;
@@ -180,12 +182,12 @@ export class CalendarComponent implements OnInit {
     this.showUpdateEventBtn = false;
     this.disabledReserveNowBtn = true;
     this.showReservationDetail = false;
-    this.submitType = 'Create';
+    this.submitType = 'Створити';
     this.toastrService.success("Reservation successfully deleted!");
   }
 
   onUpdate() {
-    this.submitType = 'Update';
+    this.submitType = 'Оновити';
     this.modalReference = this.modal.open(this.modalContent, { size: 'lg' });
     this.showNew = true;
   }
@@ -216,7 +218,7 @@ export class CalendarComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.submitType === 'Create') {
+    if (this.submitType === 'Створити') {
 
       this.reservation = new Reservation();
 
@@ -228,16 +230,16 @@ export class CalendarComponent implements OnInit {
         (this.start >= event.start) && (this.start <= event.end) || (this.end >= event.start) && (this.end <= event.end));
 
       if (exists) {
-        this.toastrService.error("Another reservation has been made for these hours!");
+        this.toastrService.error("Інша бронь була зроблена на цей час!");
         this.showUpdateEventBtn = false;
         this.showDeleteEventBtn = false;
         this.showCreateEventBtn = true;
       } else if (this.start < this.currentDate) {
-        this.toastrService.error("You cannot create a reservation for past hours!");
+        this.toastrService.error("Ви не можете створити бронь в минулому часі!");
       } else if (this.total < 0) {
-        this.toastrService.error("You cannot create a reservation with negative balance!");
+        this.toastrService.error("Ви не можете створити бронь з сумою менше 0!");
       } else if (this.duration < 1) {
-        this.toastrService.error("Sorry the minimum hours for a reservation is 1 hour !");
+        this.toastrService.error("Вибачте, мінімальний час броні - 1 година!");
       } else {
 
         // Create a reservation temporary
@@ -257,6 +259,7 @@ export class CalendarComponent implements OnInit {
         this.reservation.Start = this.start.toLocaleString();
         this.reservation.End = this.end.toLocaleString();
         this.reservation.Title = this.reservationForm.title;
+        this.titleReservation = this.reservationForm.title;
         this.reservation.Total = this.reservationForm.total;
 
         this.reservation.PrimaryColor = this.reservationForm.primaryColor;
@@ -264,7 +267,7 @@ export class CalendarComponent implements OnInit {
 
         localStorage.setItem('reservation', JSON.stringify(this.reservation));
 
-        this.toastrService.success("Reservation temporary created!");
+        this.toastrService.success("Тимчасова бронь створена!");
         this.modalReference.close();
         this.showDeleteEventBtn = true;
         this.showUpdateEventBtn = true;
@@ -279,10 +282,10 @@ export class CalendarComponent implements OnInit {
       // 1. Validation for updating reservation with negative balance
       // 2. Validation for updating reservation for less than 1 hour
       if (this.total < 0) {
-        this.toastrService.error("You cannot update a reservation with a negative balance!");
+        this.toastrService.error("Ви не можете створити бронь з сумою менше 0!");
       }
       else if (this.duration < 1) {
-        this.toastrService.error("Sorry the minimum hours for a reservation is 1 hour !");
+        this.toastrService.error("Вибачте, мінімальний час броні - 1 година!");
       } else {
         
         
@@ -306,6 +309,7 @@ export class CalendarComponent implements OnInit {
         this.reservation.Start = this.start.toLocaleString();
         this.reservation.End = this.end.toLocaleString();
         this.reservation.Title = this.reservationForm.title;
+
         this.reservation.Total = this.reservationForm.total;
 
         this.reservation.PrimaryColor = this.reservationForm.primaryColor;

@@ -9,215 +9,47 @@
 
 <div class="form-group">
   <div>
-    <label>Rehersal:</label>
+    <label>Репетиційні бази:</label>
     <select name="Rehersal"  [ngModel]="selectedRehersalValue" (ngModelChange)="onDropdownChange($event)" class="form-control">
       <option *ngFor="let r of RehersalList" [ngValue]="r.RehersalSpaseID">{{r.RehersalSpaseName}}</option>
    </select>  
   </div>
 </div> 
-
+<div class="card card-body bg-light text-center" style="margin-bottom:20px;">
+  <h3 style="color: rgb(97, 165, 42)">Кімнати</h3> 
+</div>
 <table class="table table-striped">
     <thead>
       <tr>
         <th>
-          <div class="d-flex flex-row">
-            <input class="form-control m-2" [(ngModel)]="RoomIdFilter" (keyup)="FilterFn()" placeholder="Filter">
-            <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaceID',true)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-              </svg>
-            </button>
-  
-            <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaceID',false)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-              </svg>
-            </button>
-          </div>
-          Room Id
-        </th>
-        <th>
-          <div class="d-flex flex-row">
-            <input class="form-control m-2" [(ngModel)]="RoomSpaseNameFilter" (keyup)="FilterFn()" placeholder="Filter">
-            <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',true)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-              </svg>
-            </button>
-  
-            <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',false)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-              </svg>
-            </button>
-          </div>
-          Room Name
+          Назва
         </th>
           <th>
-            <div class="d-flex flex-row">
-             <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',true)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-                </svg>
-              </button>
-    
-              <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',false)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-                </svg>
-              </button>
-            </div>
-            RehersalRoomSize 
+            Ціна 
           </th>
           <th>
-            <div class="d-flex flex-row">
-             <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',true)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-                </svg>
-              </button>
-    
-              <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',false)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-                </svg>
-              </button>
-            </div>
-            PriceHour 
+            URL 
           </th>
           <th>
-            <div class="d-flex flex-row">
-             <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',true)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-                </svg>
-              </button>
-    
-              <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',false)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-                </svg>
-              </button>
-            </div>
-            ImageURL 
+            Опис 
           </th>
           <th>
-            <div class="d-flex flex-row">
-             <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',true)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-                </svg>
-              </button>
-    
-              <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',false)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-                </svg>
-              </button>
-            </div>
-            PathURL 
+            Початок 
           </th>
           <th>
-            <div class="d-flex flex-row">
-             <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',true)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-                </svg>
-              </button>
-    
-              <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',false)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-                </svg>
-              </button>
-            </div>
-            Address 
+            Кінець 
           </th>
-          <th>
-            <div class="d-flex flex-row">
-             <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',true)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-                </svg>
-              </button>
-    
-              <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',false)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-                </svg>
-              </button>
-            </div>
-            Description 
-          </th>
-          <th>
-            <div class="d-flex flex-row">
-             <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',true)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-                </svg>
-              </button>
-    
-              <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',false)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-                </svg>
-              </button>
-            </div>
-            StartProgram 
-          </th>
-          <th>
-            <div class="d-flex flex-row">
-             <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',true)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-                </svg>
-              </button>
-    
-              <button type="button" class="btn btn-light" (click)="sortResult('RoomSpaseName',false)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-                </svg>
-              </button>
-            </div>
-            EndProgram 
-          </th>
-        <th>Options        <button type="button" class="btn btn-primary m-2 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          (click)="addClick()">
-          Add Room
-      </button></th>
+        <th>Змінити/Видалити        </th>
         
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let dataItem of RoomList">
-        <td>{{dataItem.RoomId}}</td>
-        <td>{{dataItem.RehersalRoomName}}</td>
-        <td>{{dataItem.RehersalRoomSize}}</td>
+           <td>{{dataItem.RehersalRoomName}}</td>
+        
        <td>{{dataItem.PriceHour}}</td>
-        <td>{{dataItem.ImageURL}}</td>
         <td>{{dataItem.PathURL}}</td>
-        <td>{{dataItem.Address}}</td>
-        <td>{{dataItem.Description}}</td>
+         <td>{{dataItem.Description}}</td>
         <td>{{dataItem.StartProgram}}</td>
         <td>{{dataItem.EndProgram}}</td>
         <td>
@@ -240,6 +72,10 @@
   
         </td>
       </tr>
+      <button type="button" class="btn btn-primary m-2 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal"
+          (click)="addClick()">
+          Додати кімнату
+      </button>
     </tbody>
   </table>
   
@@ -261,55 +97,55 @@
      
           <div class="form-group">
             <div>
-              <label>Room Name:</label>
+              <label>Назва Кімнати:</label>
               <input type="text" name="name" class="form-control" [(ngModel)]="room.RehersalRoomName">
             </div>
           </div>
           <div class="form-group">
             <div>
-              <label>RehersalRoomSize:</label>
+              <label>Розмір:</label>
               <input type="text" name="size" class="form-control" [(ngModel)]="room.RehersalRoomSize">
             </div>
           </div>
           <div class="form-group">
             <div>
-              <label>PriceHour:</label>
+              <label>Ціна за годину:</label>
               <input type="text" name="priceHour" class="form-control" [(ngModel)]="room.PriceHour">
             </div>
           </div>
           <div class="form-group">
             <div>
-              <label>ImageURL:</label>
+              <label>Шлях до фото:</label>
               <input type="text" name="imageURL" class="form-control" [(ngModel)]="room.ImageURL">
             </div>
           </div>
           <div class="form-group">
             <div>
-              <label>PathURL:</label>
+              <label>URL:</label>
               <input type="text" name="pathURL" class="form-control" [(ngModel)]="room.PathURL">
             </div>
           </div>
           <div class="form-group">
             <div>
-              <label>Address:</label>
+              <label>Адреса:</label>
               <input type="text" name="address" class="form-control" [(ngModel)]="room.Address">
             </div>
           </div>
           <div class="form-group">
             <div>
-              <label>Description:</label>
+              <label>Опис:</label>
               <input type="text" name="description" class="form-control" [(ngModel)]="room.Description">
             </div>
           </div>
           <div class="form-group">
             <div>
-              <label>StartProgram:</label>
+              <label>Початок:</label>
               <input type="text" name="startProgram" class="form-control" [(ngModel)]="room.StartProgram">
             </div>
           </div>
           <div class="form-group">
             <div>
-              <label>EndProgram:</label>
+              <label>Кінець:</label>
               <input type="text" name="endProgram" class="form-control" [(ngModel)]="room.EndProgram">
             </div>
           </div>

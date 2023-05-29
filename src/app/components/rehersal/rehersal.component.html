@@ -9,82 +9,31 @@
 
 <div class="form-group">
   <div>
-    <label>City:</label>
+    <label>Місто:</label>
     <select name="City"  [ngModel]="selectedCityValue" (ngModelChange)="onDropdownChange($event)" class="form-control">
       <option *ngFor="let c of CityList" [ngValue]="c.CityID">{{c.CityName}}</option>
    </select>  
   </div>
 </div> 
-  
+<div class="card card-body bg-light text-center" style="margin-bottom:20px;">
+  <h3 style="color: rgb(97, 165, 42)">Репетиційні бази</h3> 
+</div>
 <table class="table table-striped">
     <thead>
       <tr>
         <th>
-          <div class="d-flex flex-row">
-            <input class="form-control m-2" [(ngModel)]="RehersalSpaceIDFilter" (keyup)="FilterFn()" placeholder="Filter">
-            <button type="button" class="btn btn-light" (click)="sortResult('RehersalSpaceID',true)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-              </svg>
-            </button>
-  
-            <button type="button" class="btn btn-light" (click)="sortResult('RehersalSpaceID',false)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-              </svg>
-            </button>
-          </div>
-          Rehersal Id
-        </th>
-        <th>
-          <div class="d-flex flex-row">
-            <input class="form-control m-2" [(ngModel)]="RehersalSpaseNameFilter" (keyup)="FilterFn()" placeholder="Filter">
-            <button type="button" class="btn btn-light" (click)="sortResult('RehersalSpaseName',true)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-              </svg>
-            </button>
-  
-            <button type="button" class="btn btn-light" (click)="sortResult('RehersalSpaseName',false)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                   class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-              </svg>
-            </button>
-          </div>
-          Rehersal Name
+          Назва репетиційної бази
         </th>
           <th>
-            <div class="d-flex flex-row">
-             <button type="button" class="btn btn-light" (click)="sortResult('RehersalSpaseName',true)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z" />
-                </svg>
-              </button>
-    
-              <button type="button" class="btn btn-light" (click)="sortResult('RehersalSpaseName',false)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
-                  <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
-                </svg>
-              </button>
-            </div>
-            Adress 
+            Адреса 
           </th>
-        <th>Options        <button type="button" class="btn btn-primary m-2 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal"
-          (click)="addClick()">
-          Add Rehersal
-      </button></th>
+        <th>Змінити/Видалити  </th>
         
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let dataItem of RehersalList">
-        <td>{{dataItem.RehersalSpaseID}}</td>
+   
         <td>{{dataItem.RehersalSpaseName}}</td>
         <td>{{dataItem.Adress}}</td>
         <td>
@@ -107,6 +56,10 @@
   
         </td>
       </tr>
+      <button type="button" class="btn btn-primary m-2 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal"
+      (click)="addClick()">
+      Додати репетиційну базу
+  </button>
     </tbody>
   </table>
   
@@ -128,13 +81,13 @@
      
           <div class="form-group">
             <div>
-              <label>Rehersal Name:</label>
+              <label>Назва репетиційної бази:</label>
               <input type="text" name="name" class="form-control" [(ngModel)]="rehersal.RehersalSpaseName">
             </div>
           </div>
           <div class="form-group">
             <div>
-              <label>Adress:</label>
+              <label>Адреса:</label>
               <input type="text" name="adress" class="form-control" [(ngModel)]="rehersal.Adress">
             </div>
           </div>

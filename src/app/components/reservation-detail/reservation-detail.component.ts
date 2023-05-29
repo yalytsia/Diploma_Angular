@@ -45,11 +45,12 @@ export class ReservationDetailComponent implements OnInit {
       this.calendarService.getReservationById(this.data.id).subscribe(
         (events: any) => {
           this.events = events;
-
+          console.log("events: " + JSON.stringify(events));
           // Display default calendar date as start date from created reservation
           this.viewDate = new Date(this.data.start);
           this.events.forEach(event => {
             event.start = new Date(event.Start),
+            console.log("events: " + JSON.stringify(event.Start));
             event.end = new Date(event.End),
             event.color = this.calendarConfig.colors.green
           });

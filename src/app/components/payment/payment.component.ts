@@ -34,7 +34,7 @@ export class PaymentComponent implements OnInit {
               {
                 description: "Room: " + this.room.RehersalRoomName,
                 amount: {
-                  currency_code: 'ГРН',
+                  currency_code: 'USD',
                   value: this.reservation.Total
                 }
               }
@@ -45,11 +45,11 @@ export class PaymentComponent implements OnInit {
           const order = await actions.order.capture();
           this.calendarService.createReservation(this.reservation).subscribe(
             () => {
-              this.toastrService.success("Payment successfully done!");
+              this.toastrService.success("Успішна оплата!");
               this.router.navigate(['/room/' + this.room.PathURL]);
             },
             (error) => {
-              this.toastrService.error("Some error occured while processing the transaction!");
+              this.toastrService.error("Саталася помилка під час оплати!");
             })
 
         },

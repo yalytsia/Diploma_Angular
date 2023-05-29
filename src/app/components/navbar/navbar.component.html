@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" routerLink="">Home</a> 
+      <a class="navbar-brand" routerLink="">Додому</a> 
  
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,23 +11,23 @@
 
           <li class="nav-item dropdown" *ngIf="currentCustomer; else not_loggedin">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                welcome {{ currentCustomer.EmailAddress }}
+                Ласкаво просимо, {{ currentCustomer.EmailAddress }}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a routerLink="/my-reservations" style="cursor: pointer" class="dropdown-item">My Reservations</a>
-                <a cstyle="cursor: pointer" class="dropdown-item" routerLink="/show-city">cities</a>     
-                <a style="cursor: pointer" class="dropdown-item" routerLink="/rehersal">rehersal</a>   
-                <a style="cursor: pointer" class="dropdown-item" routerLink="/room">room</a>  
+                <a routerLink="/my-reservations" style="cursor: pointer" class="dropdown-item">Мої бронювання</a>
+                <a cstyle="cursor: pointer" class="dropdown-item" routerLink="/show-city">Міста</a>     
+                <a style="cursor: pointer" class="dropdown-item" routerLink="/rehersal">Репетиційні бази</a>   
+                <a style="cursor: pointer" class="dropdown-item" routerLink="/room">Кімнати</a>  
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" (click)="logout()" style="cursor:pointer" >Logout</a>
+                <a class="dropdown-item" (click)="logout()" style="cursor:pointer" >Вийти</a>
               </div>
             </li>
             <ng-template #not_loggedin>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/login">Login</a>
+                    <a class="nav-link" routerLink="/login">Зайти</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" routerLink="/register">Register</a>
+                    <a class="nav-link" routerLink="/register">Зареєструватися</a>
                   </li>
             </ng-template>
         </ul>

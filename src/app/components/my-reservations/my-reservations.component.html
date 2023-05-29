@@ -9,27 +9,27 @@
             <thead class="thead-light">
               <tr>
                 <th class="text-center" style="font-size:14px;" scope="col">#</th>
-                <th class="text-center" style="font-size:14px;" scope="col">Room</th>
-                <th class="text-center" style="font-size:14px;" scope="col">Reservation Name</th>
-                <th class="text-center" style="font-size:14px;" scope="col">Total</th>
-                <th class="text-center" style="font-size:14px;" scope="col">Address</th>
-                <th class="text-center" style="font-size:14px;" scope="col">Start</th>
-                <th class="text-center" style="font-size:14px;" scope="col">End</th>
+                <th class="text-center" style="font-size:14px;" scope="col">Кімната</th>
+                <th class="text-center" style="font-size:14px;" scope="col">Назва бронювання</th>
+                <th class="text-center" style="font-size:14px;" scope="col">Загалом</th>
+                <th class="text-center" style="font-size:14px;" scope="col">Адреса</th>
+                <th class="text-center" style="font-size:14px;" scope="col">Початок</th>
+                <th class="text-center" style="font-size:14px;" scope="col">Кінець</th>
               </tr>
             </thead>
             <tbody *ngIf="reservations?.length > 0; else no_reservations">
               <tr *ngFor="let reservation of reservations">
                 <td class="text-center" style="font-size:14px;" ><a (click)="redirectToCalendar(reservation)" style="cursor: pointer; color:rgb(52, 111, 223)">{{ reservation.Id }}</a></td>
                 <td class="text-center" style="font-size:14px;">{{ reservation.Room }}</td>
-                <td class="text-center" style="font-size:14px;">{{ reservation.Name }}</td>
-                <td class="text-center" style="font-size:14px;" >{{ reservation.Total }} ГРН</td>
+                <td class="text-center" style="font-size:14px;">{{ reservation.Title }}</td>
+                <td class="text-center" style="font-size:14px;" >{{ reservation.Total }} грн</td>
                 <td class="text-center" style="font-size:14px;">{{ reservation.Address }}</td>
                 <td class="text-center" style="font-size:14px;" >{{ reservation.Start | date :'h:mm a dd-MM-y'}}</td>
                 <td class="text-center" style="font-size:14px;">{{ reservation.End | date :'h:mm a dd-MM-y' }}</td>
               </tr>
             </tbody>
             <ng-template #no_reservations>
-                <h5 style="color:red"> <i>No reservations available!</i></h5>
+                <h5 style="color:red"> <i>Немає бронювань!</i></h5>
               </ng-template>
             
           </table>

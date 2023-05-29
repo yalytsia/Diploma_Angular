@@ -6,10 +6,10 @@
       <div class="col-md-4">
         <div class="btn-group">
           <div class="btn btn-primary btn-sm" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
-            (viewDateChange)="closeOpenMonthViewDay()"> Previous </div>
-          <div class="btn btn-outline-secondary btn-sm" mwlCalendarToday [(viewDate)]="viewDate"> Today </div>
+            (viewDateChange)="closeOpenMonthViewDay()"> Попередній </div>
+          <div class="btn btn-outline-secondary btn-sm" mwlCalendarToday [(viewDate)]="viewDate"> Сьогодні </div>
           <div class="btn btn-primary btn-sm" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
-            (viewDateChange)="closeOpenMonthViewDay()"> Next </div>
+            (viewDateChange)="closeOpenMonthViewDay()"> Настпуний </div>
         </div>
       </div>
       <div class="col-md-4">
@@ -18,11 +18,11 @@
       <div class="col-md-4">
         <div class="btn-group">
           <div class="btn btn-primary btn-sm" (click)="setView(CalendarView.Month)"
-            [class.active]="view === CalendarView.Month"> Month </div>
+            [class.active]="view === CalendarView.Month"> Місяць </div>
           <div class="btn btn-primary btn-sm" (click)="setView(CalendarView.Week)"
-            [class.active]="view === CalendarView.Week"> Week </div>
+            [class.active]="view === CalendarView.Week"> Тиждень </div>
           <div class="btn btn-primary btn-sm" (click)="setView(CalendarView.Day)"
-            [class.active]="view === CalendarView.Day"> Day </div>
+            [class.active]="view === CalendarView.Day"> День </div>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
       <div class="col-md-12">
         <div class="card bg-light">
           <button (click)="onCreate()" class="btn-sm btn-success"><i class="fa fa-plus" aria-hidden="true"></i>
-            Create Reservation </button>
+            Створити бронь </button>
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
         <div class="card bg-light">
           <button (click)="onUpdate()" class="btn-sm btn-warning"><i class="fa fa-pencil-square-o"
               aria-hidden="true"></i>
-            Update Reservation </button>
+            Оновити бронь </button>
         </div>
       </div>
     </div>
@@ -57,7 +57,7 @@
       <div class="col-md-12">
         <div class="card bg-light">
           <button (click)="onDelete()" class="btn-sm btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>
-            Delete Reservation </button>
+            Видалити бронь </button>
         </div>
       </div>
     </div>
@@ -99,12 +99,12 @@
     <div class="card mb-3">
       <img src="{{ room.ImageURL }}" height="220px" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title text-center">{{ room.Title }}</h5>
-        <p class="card-text text-center">{{ room.PriceHour }} ГРН / год </p>
-        <p class="card-text" style="font-size: 18px;"><small class="text-muted">Program: {{ room.StartProgram }}:00 -
+        <h5 class="card-title text-center">{{ room.RehersalRoomName }}</h5>
+        <p class="card-text text-center">{{ room.PriceHour }} грн / год </p>
+        <p class="card-text" style="font-size: 18px;"><small class="text-muted">Робочі години: {{ room.StartProgram }}:00 -
             {{ room.EndProgram }}:00</small> </p>
-        <p class="card-text" style="font-size: 18px;"><small class="text-muted">Description: {{ room.Description }}</small></p>
-        <p class="card-text" style="font-size: 18px;"><small class="text-muted">Address: {{ room.Address }}</small></p>
+        <p class="card-text" style="font-size: 18px;"><small class="text-muted">Опис: {{ room.Description }}</small></p>
+        <p class="card-text" style="font-size: 18px;"><small class="text-muted">Адреса: {{ room.Address }}</small></p>
       </div>
     </div>
     <!-- --------------------- -->
@@ -113,7 +113,7 @@
     <div *ngIf="showReservationDetail" class="card" style="margin-bottom: 10px;">
       <div class="card-header">
         <div class="float-left">
-          Reservation Detail
+          Деталі
         </div>
       </div>
       <div class="card-body">
@@ -138,7 +138,7 @@
               <div>
                 <!-- <label>Reservation Name:</label> -->
                 <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                  value="{{ reservationForm.Title }}" readonly />
+                  value="{{ reservationForm.title }}" readonly />
               </div>
             </div>
           </div>
@@ -150,7 +150,7 @@
               <div>
                 <!-- <label>Start Time:</label> -->
                 <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                  value=" Start: {{ start }}" readonly />
+                  value=" Початок: {{ start }}" readonly />
               </div>
             </div>
           </div>
@@ -160,7 +160,7 @@
               <div>
                 <!-- <label>End Time:</label> -->
                 <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                  value=" End: {{ end }}" readonly />
+                  value=" Кінець: {{ end }}" readonly />
               </div>
             </div>
           </div>
@@ -170,7 +170,7 @@
           <div>
             <!-- <label>Duration Hours:</label> -->
             <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-              value="Duration: {{ duration }} h" readonly />
+              value="Тривалість: {{ duration }} h" readonly />
           </div>
         </div>
 
@@ -179,7 +179,7 @@
       </div>
       <div class="card-footer">
         <div class="float-right" style="margin-right:30px">
-          <span>Total: {{ total }} ГРН</span>
+          <span>Сума: {{ total }} грн</span>
         </div>
 
       </div>
@@ -189,7 +189,7 @@
     <!-- SHOW PROCEED TO PAYMENT BUTTON -->
     <div class="float-right" style="margin: 10xpx;">
       <button (click)="reserveNow()" [disabled]="disabledReserveNowBtn" class="btn btn-warning"><i
-          class="fa fa-credit-card-alt" aria-hidden="true"></i> Reserve Now </button>
+          class="fa fa-credit-card-alt" aria-hidden="true"></i> Забронювати </button>
     </div>
     <!-- --------------------- -->
   </div>
@@ -201,7 +201,7 @@
 
 <ng-template #modalContent let-close="close">
   <div class="modal-header">
-    <h5 class="modal-title">{{ submitType }} Reservation</h5>
+    <h5 class="modal-title">{{ submitType }} Бронь</h5>
     <button type="button" class="close" (click)="close()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -219,7 +219,7 @@
         <div class="form-row">
           <div class="col-md-6">
             <div class="form-group">
-              <label>Reservation No:</label>
+              <label>Номер броні:</label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <div class="input-group-text">#</div>
@@ -233,10 +233,10 @@
 
           <div class="col-md-6">
             <div class="form-group">
-              <label>Total</label>
+              <label>Сума</label>
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <div class="input-group-text">ГРН</div>
+                  <div class="input-group-text">грн</div>
                 </div>
                 <input name="total" #total="ngModel" [(ngModel)]="reservationForm.Total" class="form-control" readonly>
               </div>
@@ -246,39 +246,39 @@
 
         <div class="form-group">
           <div>
-            <label>Reservation Name:</label>
-            <input class="form-control" name="title" #title="ngModel" [(ngModel)]="reservationForm.Title"
+            <label>Назва броні:</label>
+            <input class="form-control" name="title" #title="ngModel" [(ngModel)]="reservationForm.title"
               (change)="updateTotal($event.target.value)">
           </div>
-          <div style="color:red;" *ngIf="f.submitted && !title.valid">Reservation Name is required!</div>
+          <div style="color:red;" *ngIf="f.submitted && !title.valid">Назва броні обов'язкова!</div>
 
         </div>
 
         <div class="form-group">
           <div>
-            <label>Start:</label>
+            <label>Початок:</label>
             <input class="form-control" name="start" #start="ngModel" [(ngModel)]="reservationForm.Start"
               (ngModelChange)="getStartTimeSelection($event)" placeholder="Start Time" [minute-step]="minuteStep"
               (closing$)="show = true" [min-hour]="minHour" [max-hour]="maxHour" [close-on-select]="false" min="0" max="60"
               ngui-datetime-picker required />
           </div>
-          <div style="color: red;" *ngIf="f.submitted && !start.valid">Start time is required!</div>
+          <div style="color: red;" *ngIf="f.submitted && !start.valid">Початковий час обов'язковий!</div>
 
         </div>
 
         <div class="form-group">
           <div>
-            <label>End:</label>
+            <label>Кінець:</label>
             <input class="form-control" name="end" #end="ngModel" [(ngModel)]="reservationForm.End"
               (ngModelChange)="getEndTimeSelection($event)" placeholder="End Time" [minute-step]="minuteStep"
               [min-hour]="minHour" [max-hour]="maxHour" [close-on-select]="false" min="0" max="60" ngui-datetime-picker  />
           </div>
-          <div style="color: red;" *ngIf="f.submitted && !start.valid">End time is required!</div>
+          <div style="color: red;" *ngIf="f.submitted && !start.valid">Кінцевий час обов'язковий!</div>
 
         </div>
 
         <div class="modal-footer">
-          <button (click)="close()" class="btn-sm btn-primary" style="margin-right:5px;"> Cancel </button>
+          <button (click)="close()" class="btn-sm btn-primary" style="margin-right:5px;"> Скасувати </button>
           <button type="submit" class="btn-sm btn-success">{{ submitType }}</button>
         </div>
       </form>
